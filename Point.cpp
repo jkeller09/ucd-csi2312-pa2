@@ -14,10 +14,11 @@ Point::Point() {
 }
 
 // Constructor
-// Initializes the point to (initX, initY, initZ)
+
 
 Point::Point(int dim, double values) {
-
+    int dim;
+    double values;
 }
 
 // Destructor
@@ -27,20 +28,61 @@ Point::~Point() {
     // no-op
 }
 
+Point &Point::operator*=(double d) {
+    for(int i=0; i < dim; i++)
+        values[i] *= d;
+    return *this;
+}
+
+Point & Point::operator/=(double d) {
+    for(int i=0; i < dim; i++)
+        values[i] /= d;
+    return *this;
+}
+
+Point & Point::operator+=(double d) {
+    for(int i=0; i < dim; i++)
+        values[i] += d;
+    return *this;
+}
+
+Point & Point::operator-=(double d) {
+    for(int i=0; i < dim; i++)
+        values[i] -= d;
+    return *this;
+}
+
+const Point Point::operator*(double d) const {
+    return Point(dim) *= d;
+}
+
+const Point Point::operator/(double d) const {
+    return Point(dim) /= d;
+}
+
+const Point Point::operator+(double d) const {
+    return Point(dim) += d;
+}
+
+const Point Point::operator-(double d) const {
+    return Point(dim) -= d;
+}
 // Mutator methods
 // Change the values of private member variables
 int getDims() const { return dim;}
 
 void Point::setValue(int, double) {
-    ;
+    int dim;
+    double values;
 }
 
 // Accessors
 // Return the current values of private member variables
 
 double Point::getValue(int) const {
-    ;
+    int dim;
 }
+
 
 
 double Point::distanceTo(const Point &other) const {    //calculates the distance between two points
@@ -55,3 +97,4 @@ double Point::distanceTo(const Point &other) const {    //calculates the distanc
     return 0;
 
 }
+
