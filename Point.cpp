@@ -1,8 +1,55 @@
 //
 // Created by Jessica Keller on 9/17/15.
 //
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 #include "Point.h"
+
+// iostream
+using std::cout;
+using std::endl;
+
+// fstream
+using std::ifstream;
+
+// sstream
+using std::stringstream;
+using std::string;
+
+int main() {
+    ifstream csv("points.txt");
+
+    if (csv.is_open()) {
+
+        while (getline(csv,line)) {
+
+            cout << "Line: " << line << endl;
+
+            stringstream lineStream(line);
+            string value;
+            double d;
+            Point p(5);
+
+            int i = 1;
+            while (getline(lineStream, value, ',')) {
+                d = stod(value);
+
+                cout << "Value: " << d << endl;
+
+                p.setValue(i++, d);
+            }
+            cout << "Point: " << p << endl;
+        }
+    }
+    csv.close();
+
+    return 0;
+}
+
+const char Point::Point_VALUE_DELIM = ',';
+
 
 // Default constructor
 // Initializes the point to (0.0, 0.0, 0.0)
