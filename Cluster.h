@@ -1,10 +1,9 @@
 //
-// Created by Jessica Keller on 9/17/15.
+// Created by Jessica
 //
 
-#ifndef PROGRAMMING_ASSIGNMENT2_CLUSTER_H
-#define PROGRAMMING_ASSIGNMENT2_CLUSTER_H
-
+#ifndef PROGRAMMING_ASSIGNMENT_CLUSTER_H
+#define PROGRAMMING_ASSIGNMENT_CLUSTER_H
 #include "Point.h"
 
 namespace Clustering {
@@ -23,12 +22,64 @@ namespace Clustering {
     };
 
     class Cluster {
+        class Centroid {                    // private inner/nested/member class
+            PointPtr __centroid;
+            Dimension __dimension;
+        public:
+
+            Centroid(Dimension d) :
+                    __dimension(d),
+                    __centroid(new Point(d)) { }
+
+            ~Centroid() { delete __centroid; }
+
+            const Point get() const {
+                return *__centroid;
+            }
+
+            void set(const Point &point) {
+                *__centroid = point;
+            }
+        };
+
+        Centroid __centroid;                  // private member
+        Dimension __dimension;
+
+    public:
+        Cluster(Dimension d) :
+                __dimension(d),
+                __centroid(d) { }
+
+
+        const Point getCentroid() const {
+            return __centroid.get();
+        }
+
+        void setCentroid(const Point &point) {
+            __centroid.set(point);
+        }
+
+        Dimension getDimension() const {
+            return __dimension;
+        }
+
+        friend std::ostream &operator<<(std::ostream &os, const Cluster &c);
+    };
+
+
+    class Cluster {
 
         int size;
         LNodePtr points;
 
+    private:
+
+        static unsigned int __idGenerator;
+
 
     public:
+
+        static const char POINT_CLUSTER_ID_DELIM;
 
         Cluster() : size(0), points(nullptr) {};
 
@@ -75,4 +126,4 @@ namespace Clustering {
     };
 
 }
-#endif //PROGRAMMING_ASSIGNMENT2_CLUSTER_H
+#endif //PROGRAMMING_ASSIGNMENT_CLUSTER_H
