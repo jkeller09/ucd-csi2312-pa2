@@ -13,33 +13,16 @@ using namespace Clustering;
 double computeArea(Point &p1, Point &p2, Point &p3);
 
 int main() {
-    Point p();
+    cout << "Hello, Clustering!" << endl;
 
-    cout << computeArea;
+    const unsigned int dimensions = 10;
+    Cluster c(dimensions);
 
-    p.setValues(i, 20* (dim / 2-i));
+    cout << c << endl;
 
-    cout << p << endl;
+    Point centroid = c.getCentroid();
 
-    Point p1(p);
-
-    cout << p1 << endl;
-
-    p1 = dim / 3;
-
-    cout <<p-p1 << endl;
-
-    Point p2(p-p1);
-
-    cout << p2 << endl;
-
-    p2/= dim * 1.5;
-
-    Point p3(p1-p2);
-
-    cout << p3 << endl;
-
-    p3 *= dim * 1;
+    cout << centroid << endl;
 
     return 0;
 

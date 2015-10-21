@@ -1,22 +1,35 @@
 //
-// Created by Jessica Keller on 9/17/15.
+// Created by Jessica
 //
-// A 3-dimensional point class!
-// Coordinates are double-precision floating point.
 
-#ifndef clustering__point_h
-#define clustering__point_h
-
+#ifndef PROGRAMMING_ASSIGNMENT_POINT_H
+#define PROGRAMMING_ASSIGNMENT_POINT_H
 #include <iostream>
+
 
 namespace Clustering {
 
+    typedef unsigned int Dimension;
+
     class Point {
 
-        int dim;
-        double *values;
+        double *__values;
+        unsigned __dimensions;
+
+
+    private:
+
+        Dimension __dimension;
 
     public:
+
+        static const char POINT_VALUE_DELIM;
+
+        Point(Dimension d) : __dimension(d){}
+
+
+        friend std::ostream &operator<<(std::ostream &os, const Point &p);
+
         // Constructors
 
         Point(int);                      // default constructor
@@ -69,4 +82,4 @@ namespace Clustering {
     };
 }
 
-#endif // __point_h
+#endif //PROGRAMMING_ASSIGNMENT_POINT_H

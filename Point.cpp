@@ -1,8 +1,20 @@
 //
-// Created by Jessica Keller on 9/17/15.
+// Created by Jessica
 //
 
 #include "Point.h"
+
+
+
+const char Point::Point_VALUE_DELIM = ',';
+
+namespace Clustering{
+
+    std::ostream &operator<<(std::ostream &os, const Point &p) {
+        os << "point dimension " << p.__dimension;
+        return os;
+    }
+}
 
 // Default constructor
 // Initializes the point to (0.0, 0.0, 0.0)
