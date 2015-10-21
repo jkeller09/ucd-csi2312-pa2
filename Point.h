@@ -17,10 +17,7 @@ namespace Clustering {
         double *values;
 
     public:
-
-        static const char POINT_VALUE_DELIM;
-
-                                    // Constructors
+        // Constructors
 
         Point(int);                      // default constructor
         Point(int, double *);
