@@ -25,7 +25,13 @@ namespace Clustering {
         class Centroid {                    // private inner/nested/member class
             PointPtr __centroid;
             Dimension __dimension;
+
+
+        private:
+            static unsigned int __idGenerator;
+
         public:
+            static const char POINT_CLUSTER_ID_DELIM;
 
             Centroid(Dimension d) :
                     __dimension(d),
@@ -63,11 +69,13 @@ namespace Clustering {
             return __dimension;
         }
 
+        void add(const PointPtr &);
+        const PointPtr &remove(const Pointptr &);
+
         friend std::ostream &operator<<(std::ostream &os, const Cluster &c);
     };
 
-
-    class Cluster {
+    /*class Cluster {
 
         int size;
         LNodePtr points;
@@ -124,6 +132,8 @@ namespace Clustering {
         friend const Cluster operator-(const Cluster &lhs, const PointPtr &rhs);
 
     };
+*/
+
 
 }
 #endif //PROGRAMMING_ASSIGNMENT_CLUSTER_H

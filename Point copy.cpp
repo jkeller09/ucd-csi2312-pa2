@@ -1,9 +1,60 @@
 //
 // Created by Jessica
 //
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 #include "Point.h"
 
+//iostream
+
+using std::cout;
+using std::endl;
+
+//fstream
+
+using std::ifstream;
+
+//sstream
+
+using std::stringstream;
+using std::string;
+
+int main(){
+
+    ifstream csv("points.txt");
+
+    if (csv.is_open()){
+
+        while(getline(csv,line)){
+
+            cout << "Line: " << line << endl;
+
+            stringstream lineStream(line);
+            string value;
+            double d;
+            Point p(5);
+
+            int i = 1;
+
+            while(getline(lineStream, value, ',')){
+
+                d = stod(value);
+
+                cout << "Value: " << d << endl;
+
+                p.setValue(i++, d);
+            }
+
+            cout << "Point: " << p << endl;
+        }
+    }
+
+    csv.close();
+
+    return 0;
+}
 
 
 const char Point::Point_VALUE_DELIM = ',';
@@ -16,13 +67,11 @@ namespace Clustering{
     }
 }
 
-// Default constructor
+/*// Default constructor
 // Initializes the point to (0.0, 0.0, 0.0)
 
 Point::Point() {
-    x = 0.0;
-    y = 0.0;
-    z = 0.0;
+
 }
 
 // Constructor
@@ -109,4 +158,4 @@ double Point::distanceTo(const Point &other) const {    //calculates the distanc
     return 0;
 
 }
-
+*/

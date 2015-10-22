@@ -25,15 +25,14 @@ namespace Clustering {
 
         static const char POINT_VALUE_DELIM;
 
-        Point(Dimension d) : __dimension(d){}
+        Point(unsigned d) : __dimensions(d), __values(nullptr) {}
 
 
         friend std::ostream &operator<<(std::ostream &os, const Point &p);
 
         // Constructors
 
-        Point(int);                      // default constructor
-        Point(int, double *);
+
 
         // Copy constructor, Overloaded operator=, Destructor
 
