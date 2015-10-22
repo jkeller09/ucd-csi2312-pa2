@@ -46,6 +46,10 @@ namespace Clustering {
             void set(const Point &point) {
                 *__centroid = point;
             }
+
+            static unsigned getidGenerator(int id){
+                __idGenerator = id;
+            }
         };
 
         Centroid __centroid;                  // private member
@@ -69,8 +73,20 @@ namespace Clustering {
             return __dimension;
         }
 
+        void pickPoints(int k, PointPtr *pointArray){
+
+        }
+
+        double intraClusterDistance() const {
+
+        }
+
+        int getClusterEdges() {
+
+        }
+
         void add(const PointPtr &);
-        const PointPtr &remove(const Pointptr &);
+        const PointPtr &remove(const PointPtr &);
 
         friend std::ostream &operator<<(std::ostream &os, const Cluster &c);
     };

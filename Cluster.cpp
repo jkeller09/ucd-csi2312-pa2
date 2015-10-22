@@ -4,6 +4,9 @@
 #include <iostream>
 #include "Cluster.h"
 
+const char Cluster::POINT_CLUSTER_ID_DELIM = ':';
+
+unsigned int Cluster::__idGenerator = 1;
 
 namespace Clustering {
 
@@ -45,6 +48,9 @@ namespace Clustering {
         return p;
     }
 };
+Cluster::Cluster(const PointPtr &ptr){
+    const PointPtr;
+}
 
 Cluster Cluster::operator=(const Point &otherp) {
     double dim = 0;
@@ -56,6 +62,3 @@ Cluster Cluster::operator=(const Point &otherp) {
 
 };
 
-const char Cluster::POINT_CLUSTER_ID_DELIM = ':';
-
-unsigned int Cluster::__idGenerator = 1;

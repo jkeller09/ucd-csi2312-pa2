@@ -41,7 +41,7 @@ namespace Clustering {
         ~Point();
 
         //Accessor & Mutator methods
-
+/*
         int getDims() const { return dim; }
         void setValue(int, double);
         double getValue(int) const;
@@ -77,8 +77,9 @@ namespace Clustering {
         friend std::ostream &operator<<(std::ostream &, const Point &);
         friend std::istream &operator>>(std::istream &, Point &);
 
-
+*/
     };
+
 }
 
 #endif //PROGRAMMING_ASSIGNMENT_POINT_H
