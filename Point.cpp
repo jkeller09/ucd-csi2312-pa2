@@ -56,10 +56,9 @@ int main(){
     return 0;
 }
 
-
-const char Point::Point_VALUE_DELIM = ',';
-
 namespace Clustering{
+
+    const char Point::Point_VALUE_DELIM = ',';
 
     std::ostream &operator<<(std::ostream &os, const Point &p) {
         os << "point dimension " << p.__dimension;

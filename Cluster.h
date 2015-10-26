@@ -4,7 +4,22 @@
 
 #ifndef PROGRAMMING_ASSIGNMENT_CLUSTER_H
 #define PROGRAMMING_ASSIGNMENT_CLUSTER_H
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include "Point.h"
+
+//iostream
+using std::cout;
+using std::endl;
+
+//fstream
+using std::ifstream;
+
+//sstream
+using std::stringstream;
+using std::string;
+
 
 namespace Clustering {
 
@@ -22,6 +37,60 @@ namespace Clustering {
     };
 
     class Cluster {
+
+    private:
+
+        static unsigned int __idGenerator;
+/*
+    public:
+        int size;
+        LNodePtr points;
+
+        static const char POINT_CLUSTER_ID_DELIM;
+
+        Cluster() : size(0), points(nullptr) {};
+
+        //Copy constructor, overloaded operator=, destructor
+
+        Cluster(const Cluster &);
+        Cluster &operator=(const Cluster &);
+        ~Cluster();
+
+        //Set functions allow calling c1.add(c2.remove(p));
+
+        void add(const PointPtr &);
+        const PointPtr &remove(const PointPtr &);
+
+        //Overloaded Operators
+
+        //IO
+
+        friend std::ostream &operator<<(std::ostream &, const Cluster &);
+        friend std::istream &operator>>(std::istream &, Cluster &);
+
+        //Set-preserving operators (do not duplicate points in the space)
+        //Friends
+
+        friend bool operator==(const Cluster &lhs, const Cluster &rhs);
+
+        //Members
+
+        Cluster &operator+=(const Cluster &rhs);    //Union
+        Cluster &operator-=(const Cluster &rhs);    //(asymmetric) difference
+
+        Cluster &operator+=(const Point &rhs);      //add point
+        Cluster &operator-=(const Point &rhs);      //remove point
+
+        //Set-destructive operators (duplicate points in the space)
+        //Friends
+
+        friend const Cluster operator+(const Cluster &lhs, const Cluster &rhs);
+        friend const Cluster operator-(const Cluster &lhs, const Cluster &rhs);
+
+        friend const Cluster operator+(const Cluster &lhs, const PointPtr &rhs);
+        friend const Cluster operator-(const Cluster &lhs, const PointPtr &rhs);
+*/
+
         class Centroid {                    // private inner/nested/member class
             PointPtr __centroid;
             Dimension __dimension;
@@ -77,78 +146,79 @@ namespace Clustering {
 
         }
 
-        double intraClusterDistance() const {
+        double intraClusterDistance(const Cluster &c1, const Cluster &c2) const {
 
         }
 
-        int getClusterEdges() {
+        double interClusterDistance(const Cluster &c1, const Cluster &c2){
 
         }
 
-        void add(const PointPtr &);
-        const PointPtr &remove(const PointPtr &);
+        int getClusterEdges(const Cluster &c1, const Cluster &c2) {
+            int size;
+            int answer;
+
+            size = &c1 - &c2;
+            answer = size * (size -1)/2;
+        }
+
+        double interClusterEdges(const Cluster &c1, const Cluster &c2){
+            double size;
+            double a;
+
+            size = &c1 - &c2;
+            a = size * (size -1)/2;
+
+
+        }
 
         friend std::ostream &operator<<(std::ostream &os, const Cluster &c);
     };
 
-    /*class Cluster {
-
-        int size;
-        LNodePtr points;
-
-    private:
-
-        static unsigned int __idGenerator;
-
+    class KMeans{
 
     public:
+        Cluster point_space;
 
-        static const char POINT_CLUSTER_ID_DELIM;
+        ifstream csv('points.txt');
 
-        Cluster() : size(0), points(nullptr) {};
+        if (csv.is_open()) {
 
-        //Copy constructor, overloaded operator=, destructor
+            while (getline(csv,line)) {
 
-        Cluster(const Cluster &);
-        Cluster &operator=(const Cluster &);
-        ~Cluster();
+                cout << "Line: " << line << endl;
 
-        //Set functions allow calling c1.add(c2.remove(p));
+                stringstream lineStream(line);
+                string value;
+                double d;
+                point_space p(5);
 
-        void add(const PointPtr &);
-        const PointPtr &remove(const PointPtr &);
+                int i = 1;
+                while (getline(lineStream, value, ',')) {
+                    d = stod(value);
 
-        //Overloaded Operators
+                    cout << "Value: " << d << endl;
 
-        //IO
+                    p.setValue(i++, d);
+                }
+                cout << "Point: " << p << endl;
+            }
+        }
+        csv.close();
 
-        friend std::ostream &operator<<(std::ostream &, const Cluster &);
-        friend std::istream &operator>>(std::istream &, Cluster &);
+        static const double SCORE_DIFF_THRESHOLD;
 
-        //Set-preserving operators (do not duplicate points in the space)
-        //Friends
+        double score;
+        double scoreDiff;
 
-        friend bool operator==(const Cluster &lhs, const Cluster &rhs);
+        scoreDiff = SCORE_DIFF_THRESHOLD + 1;
 
-        //Members
+        double computeClusteringScore(){
 
-        Cluster &operator+=(const Cluster &rhs);    //Union
-        Cluster &operator-=(const Cluster &rhs);    //(asymmetric) difference
-
-        Cluster &operator+=(const Point &rhs);      //add point
-        Cluster &operator-=(const Point &rhs);      //remove point
-
-        //Set-destructive operators (duplicate points in the space)
-        //Friends
-
-        friend const Cluster operator+(const Cluster &lhs, const Cluster &rhs);
-        friend const Cluster operator-(const Cluster &lhs, const Cluster &rhs);
-
-        friend const Cluster operator+(const Cluster &lhs, const PointPtr &rhs);
-        friend const Cluster operator-(const Cluster &lhs, const PointPtr &rhs);
-
+        }
     };
-*/
+
+
 
 
 }

@@ -9,6 +9,8 @@
 
 using namespace std;
 using namespace Clustering;
+using Clustering::Cluster;
+using Clustering::Point;
 
 double computeArea(Point &p1, Point &p2, Point &p3);
 

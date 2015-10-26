@@ -4,12 +4,11 @@
 #include <iostream>
 #include "Cluster.h"
 
-const char Cluster::POINT_CLUSTER_ID_DELIM = ':';
-
-unsigned int Cluster::__idGenerator = 1;
-
 namespace Clustering {
 
+    const char Cluster::POINT_CLUSTER_ID_DELIM = ':';
+
+    unsigned int Cluster::__idGenerator = 1;
 
     std::ostream &operator<<(std::ostream &os, const Cluster &c) {
         os << "cluster dimension " << c.__dimension << ", centroid " << c.__centroid.get();
@@ -47,18 +46,23 @@ namespace Clustering {
         }
         return p;
     }
-};
-Cluster::Cluster(const PointPtr &ptr){
-    const PointPtr;
-}
 
-Cluster Cluster::operator=(const Point &otherp) {
-    double dim = 0;
-    if (&otherp != this) {
-        dim = otherp.dim;
-        arr = new double[otherp.dim];
+    Cluster::Cluster(const PointPtr &ptr){
+        const PointPtr;
     }
-    return *this;
 
+    Cluster Cluster::operator=(const Point &otherp) {
+        double dim = 0;
+        if (&otherp != this) {
+            dim = otherp.dim;
+            arr = new double[otherp.dim];
+        }
+        return *this;
+
+    };
 };
+
+
+
+
 

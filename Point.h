@@ -5,6 +5,7 @@
 #ifndef PROGRAMMING_ASSIGNMENT_POINT_H
 #define PROGRAMMING_ASSIGNMENT_POINT_H
 #include <iostream>
+#include "Cluster.h"
 
 
 namespace Clustering {
@@ -32,8 +33,6 @@ namespace Clustering {
 
         // Constructors
 
-
-
         // Copy constructor, Overloaded operator=, Destructor
 
         Point(const Point &);
@@ -41,7 +40,6 @@ namespace Clustering {
         ~Point();
 
         //Accessor & Mutator methods
-/*
         int getDims() const { return dim; }
         void setValue(int, double);
         double getValue(int) const;
@@ -76,8 +74,6 @@ namespace Clustering {
 
         friend std::ostream &operator<<(std::ostream &, const Point &);
         friend std::istream &operator>>(std::istream &, Point &);
-
-*/
     };
 
 }
