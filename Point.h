@@ -12,6 +12,7 @@ namespace Clustering {
 
     typedef unsigned int Dimension;
 
+    template<typename T, int dim>
     class Point {
 
         double *__values;

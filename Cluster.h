@@ -36,19 +36,25 @@ namespace Clustering {
 
     };
 
+    template<typename T, int dim>
     class Cluster {
 
     private:
 
         static unsigned int __idGenerator;
-/*
+        std::forward_list<Point> __points;
+
+        static double unordered_map;
+
+        unsigned int numberImported();
+        unsigned int numberFailed();
+
+
     public:
-        int size;
-        LNodePtr points;
 
         static const char POINT_CLUSTER_ID_DELIM;
 
-        Cluster() : size(0), points(nullptr) {};
+        Cluster();
 
         //Copy constructor, overloaded operator=, destructor
 
@@ -89,7 +95,6 @@ namespace Clustering {
 
         friend const Cluster operator+(const Cluster &lhs, const PointPtr &rhs);
         friend const Cluster operator-(const Cluster &lhs, const PointPtr &rhs);
-*/
 
         class Centroid {                    // private inner/nested/member class
             PointPtr __centroid;
@@ -155,19 +160,10 @@ namespace Clustering {
         }
 
         int getClusterEdges(const Cluster &c1, const Cluster &c2) {
-            int size;
-            int answer;
 
-            size = &c1 - &c2;
-            answer = size * (size -1)/2;
         }
 
         double interClusterEdges(const Cluster &c1, const Cluster &c2){
-            double size;
-            double a;
-
-            size = &c1 - &c2;
-            a = size * (size -1)/2;
 
 
         }
@@ -175,48 +171,6 @@ namespace Clustering {
         friend std::ostream &operator<<(std::ostream &os, const Cluster &c);
     };
 
-    class KMeans{
-
-    public:
-        Cluster point_space;
-
-        ifstream csv('points.txt');
-
-        if (csv.is_open()) {
-
-            while (getline(csv,line)) {
-
-                cout << "Line: " << line << endl;
-
-                stringstream lineStream(line);
-                string value;
-                double d;
-                point_space p(5);
-
-                int i = 1;
-                while (getline(lineStream, value, ',')) {
-                    d = stod(value);
-
-                    cout << "Value: " << d << endl;
-
-                    p.setValue(i++, d);
-                }
-                cout << "Point: " << p << endl;
-            }
-        }
-        csv.close();
-
-        static const double SCORE_DIFF_THRESHOLD;
-
-        double score;
-        double scoreDiff;
-
-        scoreDiff = SCORE_DIFF_THRESHOLD + 1;
-
-        double computeClusteringScore(){
-
-        }
-    };
 
 
 

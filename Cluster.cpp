@@ -6,7 +6,7 @@
 
 namespace Clustering {
 
-    const char Cluster::POINT_CLUSTER_ID_DELIM = ':';
+    const char POINT_CLUSTER_ID_DELIM = ':';
 
     unsigned int Cluster::__idGenerator = 1;
 
